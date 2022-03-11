@@ -15,16 +15,16 @@ if len(sys.argv) >= 2:
     touchedFiles = []
     receive = requests.get(url)
     if receive.status_code == 200:
-    ret = receive.json()
-    if "author" in ret.keys() and "login" in ret["author"]:
-      author = ret["author"]["login"]
-    if "files" in ret.keys():
-      for f in ret["files"]:
-        if "filename" in f: touchedFiles.append(f["filename"])
+        ret = receive.json()
+        if "author" in ret.keys() and "login" in ret["author"]:
+          author = ret["author"]["login"]
+        if "files" in ret.keys():
+          for f in ret["files"]:
+            if "filename" in f: touchedFiles.append(f["filename"])
+        
+        print("\n\n%s modified files [\n%s\n]" %(author, ',\n'.join(touchedFiles)))
     
-    print("\n\n%s modified files [\n%s\n]" %(author, ',\n'.join(touchedFiles)))
-    
-  else:
-    print("url: '%s' error in request." %url)
+    else:
+        print("url: '%s' error in request." %url)
 else:
     print("necessary args not included.")
