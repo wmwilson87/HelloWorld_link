@@ -73,7 +73,7 @@ for key in touched:
       
       os.remove(full_tf)
       with open(full_tf, 'w') as out:
-      json.dump(jsondata, out)
+        json.dump(jsondata, out)
       
     
     for tf in touched[key]:
