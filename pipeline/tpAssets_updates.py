@@ -67,13 +67,16 @@ for key in touched:
       print("TP_config file not found.  should make one?")
     else:
       print("TP_config file found.  does contain this file in assets?")
-    
-    name = "%s/tp_%s.json"%(os.path.dirname(full_tf),sha)
-    jsondata = {"info":"value of info"}
-    
-    if os.path.exists(name): os.remove(name)
-    with open(name, 'w') as out:
-        json.dump(jsondata, out)
-      
-    for tf in touched[key]:
-        print("'%s' exists: %s"%(tf, os.path.exists(tf)))
+
+      f = open(config)
+      jsondata = json.load(f)
+      jsondata["rand"] = sha
+      f.close()
+
+      os.remove(full_tf)
+      with open(full_tf, 'w') as out:
+          json.dump(jsondata, out)
+
+      for tf in touched[key]:
+          fp = os.path.join(universalAssetsPath,tf)
+          print("'%s' exists: %s" % (tf, os.path.exists(fp)))
