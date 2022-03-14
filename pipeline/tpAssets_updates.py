@@ -7,6 +7,8 @@ print('Number of arguments:', len(sys.argv), 'arguments.')
 print('Argument List:', str(sys.argv))
 print('working in directory:', os.getcwd())
 
+universalAssetsPath = os.path.join(os.path.dirname(os.getcwd()),"assets")
+
 sha = ""
 repo_url = ""
 if len(sys.argv) >= 2:
@@ -59,14 +61,14 @@ for key in touched:
     else:
       print("this isn't valid and should be ignored.")
 
-    full_tf = os.path.join(key, potential)
+    full_tf = os.path.join(universalAssetsPath, key, potential)
     print(full_tf)
     if not os.path.exists(full_tf):
       print("TP_config file not found.  should make one?")
     else:
       print("TP_config file found.  does contain this file in assets?")
     
-    name = "tp_%s.json"%sha
+    name = "%s/tp_%s.json"%(os.path.dirname(full_tf),sha)
     jsondata = {"info":"value of info"}
     
     if os.path.exists(name): os.remove(name)
