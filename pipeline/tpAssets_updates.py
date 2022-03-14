@@ -54,10 +54,10 @@ for key in touched:
     potential = ""
     if "games" in key:
       print("this is a game: '%s'"%key)
-      potential = r"2. Implementation\14. Data\TP_config.json"
+      potential = r"2. Implementation/14. Data/TP_config.json"
     elif "casino" in key:
       print("this is a casino: '%s'"%key)
-      potential = r"2. Implementation\14. Data\TP_config.json"
+      potential = r"2. Implementation/14. Data/TP_config.json"
     else:
       print("this isn't valid and should be ignored.")
 
