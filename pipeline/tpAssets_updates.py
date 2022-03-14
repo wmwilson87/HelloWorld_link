@@ -68,7 +68,7 @@ for key in touched:
     else:
       print("TP_config file found.  does contain this file in assets?")
 
-      f = open(config)
+      f = open(full_tf)
       jsondata = json.load(f)
       jsondata["rand"] = sha
       f.close()
